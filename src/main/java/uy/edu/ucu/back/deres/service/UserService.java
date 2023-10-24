@@ -10,7 +10,7 @@ public class UserService {
 
     private JdbcTemplate jdbcTemplate;
     public ResponseOK loginUser(UserRequestDTO userRequestDTO){
-        jdbcTemplate.query();
+        //jdbcTemplate.query();
         return new ResponseOK(true);
     }
 
