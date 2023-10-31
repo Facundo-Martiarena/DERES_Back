@@ -25,7 +25,3 @@ services:
       - "8080:8080"
     depends_on:
       - mysql
-
-networks:
-  default:
-    driver: bridge
