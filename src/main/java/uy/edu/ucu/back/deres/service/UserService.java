@@ -1,8 +1,11 @@
 package uy.edu.ucu.back.deres.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+
+import uy.edu.ucu.back.deres.entity.Privilege;
 import uy.edu.ucu.back.deres.entity.User;
 import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.UserLoginRequestDTO;
@@ -14,6 +17,7 @@ import java.util.UUID;
 
 @Service
 public class UserService {
+    @Autowired
     private UserRepository userRepository;
 
     public ResponseOK loginUser(UserLoginRequestDTO userRequestDTO){
@@ -23,11 +27,12 @@ public class UserService {
     public ResponseOK signupUser(UserSignupRequestDTO userRequestDTO) throws Exception {
         try {
             UUID id = UUID.randomUUID();
+            Privilege privilege = Privilege.valueOf(userRequestDTO.getPrivilege().toUpperCase());
             var user = User.builder()
                     .id(id)
                     .name(userRequestDTO.getName())
                     .password(userRequestDTO.getPassword())
-                    .privilege(userRequestDTO.getPrivilege().toString())
+                    .privilege(privilege)
                     .build();
             userRepository.save(user);
             return new ResponseOK(true);
