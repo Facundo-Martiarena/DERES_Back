@@ -1,6 +1,5 @@
-<<<<<<< HEAD
+
 **/.idea/
-=======
 # Compiled class file
 *.class
 
@@ -29,4 +28,3 @@ replay_pid*
 .DS_Store
 
 /target/*
->>>>>>> e9b4ead3879fc3618711deed5e40f3739dc64d54

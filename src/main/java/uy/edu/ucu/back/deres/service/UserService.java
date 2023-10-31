@@ -1,9 +1,7 @@
 package uy.edu.ucu.back.deres.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import uy.edu.ucu.back.deres.entity.User;
 import uy.edu.ucu.back.deres.model.ResponseOK;
@@ -14,10 +12,6 @@ import java.util.UUID;
 
 @Service
 public class UserService {
-
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
     private UserRepository userRepository;
 
     public ResponseOK loginUser(User userRequestDTO){
