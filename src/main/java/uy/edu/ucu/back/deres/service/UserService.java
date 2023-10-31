@@ -5,6 +5,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import uy.edu.ucu.back.deres.entity.User;
 import uy.edu.ucu.back.deres.model.ResponseOK;
+import uy.edu.ucu.back.deres.model.UserLoginRequestDTO;
+import uy.edu.ucu.back.deres.model.UserSignupRequestDTO;
 import uy.edu.ucu.back.deres.repository.UserRepository;
 
 import java.util.List;
@@ -14,22 +16,27 @@ import java.util.UUID;
 public class UserService {
     private UserRepository userRepository;
 
-    public ResponseOK loginUser(User userRequestDTO){
+    public ResponseOK loginUser(UserLoginRequestDTO userRequestDTO){
         return new ResponseOK(true);
     }
 
-    public ResponseOK signupUser(User userRequestDTO) throws Exception {
+    public ResponseOK signupUser(UserSignupRequestDTO userRequestDTO) throws Exception {
         try {
             UUID id = UUID.randomUUID();
-            userRequestDTO.setId(id);
-            userRepository.save(userRequestDTO);
+            var user = User.builder()
+                    .id(id)
+                    .name(userRequestDTO.getName())
+                    .password(userRequestDTO.getPassword())
+                    .privilege(userRequestDTO.getPrivilege().toString())
+                    .build();
+            userRepository.save(user);
             return new ResponseOK(true);
-        }catch (DataIntegrityViolationException e){
+
+        } catch (DataIntegrityViolationException e){
             throw new Exception("El usuario ya existe.", e);
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new Exception("Error al registrar el usuario.", e);
         }
-
     }
 
     public List<User> getUsers() {
