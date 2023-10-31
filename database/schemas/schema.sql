@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 );
 
 INSERT INTO `user` (`username`, `password`, `privilege`) VALUES
-('admin', 'admin', 'admin'),
-('user', 'user', 'user'),
-('provider', 'provider', 'provider'),
-('all', 'all', 'all');
+('admin', 'admin', 'ADMIN'),
+('user', 'user', 'USER'),
+('provider', 'provider', 'PROVIDER'),
+('all', 'all', 'ALL');

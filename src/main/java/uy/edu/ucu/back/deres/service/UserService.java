@@ -5,7 +5,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import uy.edu.ucu.back.deres.entity.Privilege;
 import uy.edu.ucu.back.deres.entity.User;
 import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.UserLoginRequestDTO;
@@ -13,7 +12,6 @@ import uy.edu.ucu.back.deres.model.UserSignupRequestDTO;
 import uy.edu.ucu.back.deres.repository.UserRepository;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class UserService {
@@ -26,13 +24,10 @@ public class UserService {
 
     public ResponseOK signupUser(UserSignupRequestDTO userRequestDTO) throws Exception {
         try {
-            UUID id = UUID.randomUUID();
-            Privilege privilege = Privilege.valueOf(userRequestDTO.getPrivilege().toUpperCase());
             var user = User.builder()
-                    .id(id)
-                    .name(userRequestDTO.getName())
+                    .username(userRequestDTO.getName())
                     .password(userRequestDTO.getPassword())
-                    .privilege(privilege)
+                    .privilege(userRequestDTO.getPrivilege().toString().toUpperCase())
                     .build();
             userRepository.save(user);
             return new ResponseOK(true);
@@ -46,13 +41,11 @@ public class UserService {
 
     public List<User> getUsers() {
         try {
-            List<User> users = userRepository.findAll();
+            List<User> users = userRepository.findAllUsers();
             return users;
-        }catch (DataAccessException e) {
+        } catch (DataAccessException e) {
             throw new RuntimeException("Error al obtener usuarios de la base de datos.", e);
         }
 
     }
-
-
 }

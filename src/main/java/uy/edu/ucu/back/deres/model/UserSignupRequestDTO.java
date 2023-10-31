@@ -10,6 +10,6 @@ import lombok.Setter;
 public class UserSignupRequestDTO {
     private String name;
     private String password;
-    private String privilege;
+    private Privilege privilege;
     private UUID id;
 }
