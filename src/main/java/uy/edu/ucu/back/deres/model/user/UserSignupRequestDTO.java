@@ -1,9 +1,10 @@
-package uy.edu.ucu.back.deres.model;
+package uy.edu.ucu.back.deres.model.user;
 
 import java.util.UUID;
 
 import lombok.Getter;
 import lombok.Setter;
+import uy.edu.ucu.back.deres.model.Privilege;
 
 @Setter
 @Getter

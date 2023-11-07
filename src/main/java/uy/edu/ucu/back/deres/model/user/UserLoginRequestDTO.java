@@ -1,4 +1,4 @@
-package uy.edu.ucu.back.deres.model;
+package uy.edu.ucu.back.deres.model.user;
 
 import lombok.Getter;
 import lombok.Setter;

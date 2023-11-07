@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import uy.edu.ucu.back.deres.entity.User;
 import uy.edu.ucu.back.deres.model.ResponseOK;
-import uy.edu.ucu.back.deres.model.UserLoginRequestDTO;
-import uy.edu.ucu.back.deres.model.UserSignupRequestDTO;
+import uy.edu.ucu.back.deres.model.user.UserLoginRequestDTO;
+import uy.edu.ucu.back.deres.model.user.UserSignupRequestDTO;
 import uy.edu.ucu.back.deres.service.UserService;
 
 import java.util.List;

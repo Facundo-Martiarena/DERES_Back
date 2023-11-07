@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import uy.edu.ucu.back.deres.entity.User;
 import uy.edu.ucu.back.deres.model.ResponseOK;
-import uy.edu.ucu.back.deres.model.UserLoginRequestDTO;
-import uy.edu.ucu.back.deres.model.UserSignupRequestDTO;
+import uy.edu.ucu.back.deres.model.user.UserLoginRequestDTO;
+import uy.edu.ucu.back.deres.model.user.UserSignupRequestDTO;
 import uy.edu.ucu.back.deres.repository.UserRepository;
 
 import java.util.List;
@@ -41,7 +41,7 @@ public class UserService {
 
     public List<User> getUsers() {
         try {
-            List<User> users = userRepository.findAllUsers();
+            List<User> users = userRepository.findAll();
             return users;
         } catch (DataAccessException e) {
             throw new RuntimeException("Error al obtener usuarios de la base de datos.", e);

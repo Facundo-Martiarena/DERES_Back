@@ -11,8 +11,4 @@ import uy.edu.ucu.back.deres.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findByUsername(String username);
-
-    @Query("SELECT u FROM User u")
-    List<User> findAllUsers();
 }
