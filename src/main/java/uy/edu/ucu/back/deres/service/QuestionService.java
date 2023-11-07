@@ -27,17 +27,18 @@ public class QuestionService {
     }
 
     public ResponseOK addQuestion(QuestionsRequestDTO questions) {
-        try {
-
+        try{
             for (QuestionRequestDTO question : questions.getQuestions()) {
                 var questionEntity = Question.builder()
                         .question(question.getQuestion())
                         .type(question.getType().toString().toUpperCase())
+                        .ponderation(question.getPonderation())
                         .build();
                 questionRepository.save(questionEntity);
             }
             return new ResponseOK(true);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             throw new RuntimeException("Error al agregar pregunta a la base de datos.", e);
         }
 

@@ -18,12 +18,12 @@ CREATE TABLE IF NOT EXISTS `provider` (
 );
 
 CREATE TABLE IF NOT EXISTS `question` (
-  `id` int(40) NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `question` varchar(255) NOT NULL,
   `type` varchar(63) NOT NULL,
-  `ponderable` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`),
-)
+  `ponderation` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+);
 
 INSERT INTO `user` (`username`, `password`, `privilege`) VALUES
 ('admin', 'admin', 'ADMIN'),
@@ -37,7 +37,7 @@ INSERT INTO `provider` (`name`, `rut`, `type`, `score`) VALUES
 ('provider3', '333', 'tipo3', '98'),
 ('provider4', '444', 'tipo4', '15');
 
-INSERT INTO `question` (`id`, `question`, `type`, `ponderable`) VALUES
-(1, 'test 1', 'AMBIENTAL', '50'),
-(2, 'test 2', 'AMBIENTAL', '50'),
-(3, 'test social', 'SOCIAL', '100');
+INSERT INTO `question` (`question`, `type`, `ponderable`) VALUES
+('test 1', 'AMBIENTAL', '50'),
+('test 2', 'AMBIENTAL', '50'),
+('test social', 'SOCIAL', '100');
