@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import uy.edu.ucu.back.deres.entity.Question;
 import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.question.QuestionRequestDTO;
+import uy.edu.ucu.back.deres.model.question.QuestionsRequestDTO;
 import uy.edu.ucu.back.deres.repository.QuestionRepository;
 
 import java.util.List;
@@ -26,13 +27,17 @@ public class QuestionService {
 
     }
 
-    public ResponseOK addQuestion(QuestionRequestDTO question) {
+    public ResponseOK addQuestion(QuestionsRequestDTO questions) {
         try {
-            var questionEntity = Question.builder()
-                    .question(question.getQuestion())
-                    .type(question.getType().toString().toUpperCase())
-                    .build();
-            questionRepository.save(questionEntity);
+
+            for (QuestionRequestDTO question : questions.getQuestions()) {
+                var questionEntity = Question.builder()
+                        .question(question.getQuestion())
+                        .type(question.getType().toString().toUpperCase())
+                        .build();
+                questionRepository.save(questionEntity);
+            }
+
             return new ResponseOK(true);
         } catch (Exception e) {
             throw new RuntimeException("Error al agregar pregunta a la base de datos.", e);
