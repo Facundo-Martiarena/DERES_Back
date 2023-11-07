@@ -21,7 +21,7 @@ public class Question {
     @Id
     private UUID id;
     private String question;
-    private QuestionType type;
+    private String type;
 
 
     public Question() {

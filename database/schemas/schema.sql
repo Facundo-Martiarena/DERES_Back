@@ -13,3 +13,4 @@ INSERT INTO `user` (`username`, `password`, `privilege`) VALUES
 ('user', 'user', 'USER'),
 ('provider', 'provider', 'PROVIDER'),
 ('all', 'all', 'ALL');
+);

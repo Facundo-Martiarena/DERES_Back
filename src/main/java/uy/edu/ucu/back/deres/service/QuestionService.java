@@ -30,7 +30,7 @@ public class QuestionService {
         try {
             var questionEntity = Question.builder()
                     .question(question.getQuestion())
-                    .type(question.getType())
+                    .type(question.getType().toString().toUpperCase())
                     .build();
             questionRepository.save(questionEntity);
             return new ResponseOK(true);
