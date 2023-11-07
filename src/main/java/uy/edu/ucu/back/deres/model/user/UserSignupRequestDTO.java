@@ -12,4 +12,5 @@ public class UserSignupRequestDTO {
     private String password;
     private Privilege privilege;
     private UUID id;
+    private String email;
 }

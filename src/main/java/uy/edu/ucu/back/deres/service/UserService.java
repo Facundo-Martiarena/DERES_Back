@@ -28,6 +28,7 @@ public class UserService {
                     .username(userRequestDTO.getName())
                     .password(userRequestDTO.getPassword())
                     .privilege(userRequestDTO.getPrivilege().toString().toUpperCase())
+                    .email(userRequestDTO.getEmail())
                     .build();
             userRepository.save(user);
             return new ResponseOK(true);
