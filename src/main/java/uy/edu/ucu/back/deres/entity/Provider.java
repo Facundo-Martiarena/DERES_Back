@@ -7,8 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.UUID;
-
 @Entity
 @Data
 @Builder
@@ -16,9 +14,8 @@ import java.util.UUID;
 @Table(name = "provider")
 public class Provider {
     @Id
-    private UUID id;
     private String name;
-    private String RUT;
+    private String rut;
     private String type;
     private String score;
 

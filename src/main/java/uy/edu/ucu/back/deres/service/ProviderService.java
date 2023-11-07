@@ -23,14 +23,13 @@ public class ProviderService {
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener proveedores de la base de datos.", e);
         }
-
     }
 
     public ResponseOK addProvider(ProviderRequestDTO provider) {
         try {
             var providerEntity = Provider.builder()
                     .name(provider.getName())
-                    .RUT(provider.getRUT())
+                    .rut(provider.getRUT())
                     .type(provider.getType())
                     .score(provider.getScore())
                     .build();
