@@ -5,13 +5,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProviderAddRequestDTO {
+public class ProviderRequestDTO {
 
     private String name;
     private String RUT;
     private String type;
     private String score;
 
-    public ProviderAddRequestDTO() {
+    public ProviderRequestDTO() {
     }
 }

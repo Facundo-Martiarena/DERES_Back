@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uy.edu.ucu.back.deres.entity.Provider;
 import uy.edu.ucu.back.deres.model.ResponseOK;
-import uy.edu.ucu.back.deres.model.provider.ProviderAddRequestDTO;
+import uy.edu.ucu.back.deres.model.provider.ProviderRequestDTO;
 import uy.edu.ucu.back.deres.repository.ProviderRepository;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class ProviderService {
 
     }
 
-    public ResponseOK addProvider(ProviderAddRequestDTO provider) {
+    public ResponseOK addProvider(ProviderRequestDTO provider) {
         try {
             var providerEntity = Provider.builder()
                     .name(provider.getName())
