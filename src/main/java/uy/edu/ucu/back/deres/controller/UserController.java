@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     private ResponseOK signup(@RequestBody UserSignupRequestDTO userRequestDTO) throws Exception {
         return userService.signupUser(userRequestDTO);

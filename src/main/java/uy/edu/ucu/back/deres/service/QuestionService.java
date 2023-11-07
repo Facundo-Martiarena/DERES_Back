@@ -1,6 +1,5 @@
 package uy.edu.ucu.back.deres.service;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uy.edu.ucu.back.deres.entity.Question;

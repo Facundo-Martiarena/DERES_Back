@@ -17,7 +17,7 @@ public class ProviderController {
     private ProviderService providerService;
 
     @PostMapping("/addProvider")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     private ResponseOK addProvider(@RequestBody ProviderRequestDTO providerAddRequestDTO){
         return providerService.addProvider(providerAddRequestDTO);

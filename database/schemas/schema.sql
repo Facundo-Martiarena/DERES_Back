@@ -17,6 +17,14 @@ CREATE TABLE IF NOT EXISTS `provider` (
   UNIQUE KEY `rut` (`rut`)
 );
 
+CREATE TABLE IF NOT EXISTS `question` (
+  `id` int(40) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `type` varchar(63) NOT NULL,
+  `ponderable` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`),
+)
+
 INSERT INTO `user` (`username`, `password`, `privilege`) VALUES
 ('admin', 'admin', 'ADMIN'),
 ('user', 'user', 'USER'),
@@ -28,3 +36,8 @@ INSERT INTO `provider` (`name`, `rut`, `type`, `score`) VALUES
 ('provider2', '222', 'tipo2', '50'),
 ('provider3', '333', 'tipo3', '98'),
 ('provider4', '444', 'tipo4', '15');
+
+INSERT INTO `question` (`id`, `question`, `type`, `ponderable`) VALUES
+(1, 'test 1', 'AMBIENTAL', '50'),
+(2, 'test 2', 'AMBIENTAL', '50'),
+(3, 'test social', 'SOCIAL', '100');

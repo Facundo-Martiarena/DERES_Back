@@ -7,7 +7,6 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import uy.edu.ucu.back.deres.model.question.QuestionType;
 
 import java.util.UUID;
 
@@ -17,12 +16,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table(name = "question")
 public class Question {
-
     @Id
     private UUID id;
     private String question;
     private String type;
-
+    private String ponderable;
 
     public Question() {
     }
