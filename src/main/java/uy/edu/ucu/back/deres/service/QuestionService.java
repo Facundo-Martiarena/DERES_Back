@@ -37,7 +37,6 @@ public class QuestionService {
                         .build();
                 questionRepository.save(questionEntity);
             }
-
             return new ResponseOK(true);
         } catch (Exception e) {
             throw new RuntimeException("Error al agregar pregunta a la base de datos.", e);
