@@ -37,7 +37,7 @@ INSERT INTO `provider` (`name`, `rut`, `type`, `score`) VALUES
 ('provider3', '333', 'tipo3', '98'),
 ('provider4', '444', 'tipo4', '15');
 
-INSERT INTO `question` (`question`, `type`, `ponderable`) VALUES
+INSERT INTO `question` (`question`, `type`, `ponderation`) VALUES
 ('test 1', 'AMBIENTAL', '50'),
 ('test 2', 'AMBIENTAL', '50'),
 ('test social', 'SOCIAL', '100');
