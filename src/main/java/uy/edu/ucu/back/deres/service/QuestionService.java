@@ -44,4 +44,20 @@ public class QuestionService {
 
     }
 
+    public ResponseOK modifyQuestion(QuestionRequestDTO questionsRequestDTO) {
+        try{
+            var questionEntity = Question.builder()
+                    .id(questionsRequestDTO.getId())
+                    .question(questionsRequestDTO.getQuestion())
+                    .type(questionsRequestDTO.getType().toString().toUpperCase())
+                    .ponderation(questionsRequestDTO.getPonderation())
+                    .build();
+
+            questionRepository.updateQuestion(questionEntity.getQuestion(), questionEntity.getType(), questionEntity.getPonderation(), questionEntity.getId());
+            return new ResponseOK(true);
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Error al modificar pregunta a la base de datos.", e);
+        }
+    }
 }

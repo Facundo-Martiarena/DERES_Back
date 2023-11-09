@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import uy.edu.ucu.back.deres.entity.Question;
 import uy.edu.ucu.back.deres.model.ResponseOK;
+import uy.edu.ucu.back.deres.model.question.QuestionRequestDTO;
 import uy.edu.ucu.back.deres.model.question.QuestionsRequestDTO;
 import uy.edu.ucu.back.deres.service.QuestionService;
 
@@ -21,6 +22,14 @@ public class QuestionController {
     @ResponseBody
     private ResponseOK login(@RequestBody QuestionsRequestDTO questionsRequestDTO){
         return questionService.addQuestion(questionsRequestDTO);
+    }
+
+
+    @PatchMapping("/modifyQuestion")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    private ResponseOK modifyQuestion(@RequestBody QuestionRequestDTO questionRequestDTO){
+        return questionService.modifyQuestion(questionRequestDTO);
     }
 
     @GetMapping("/questions")
