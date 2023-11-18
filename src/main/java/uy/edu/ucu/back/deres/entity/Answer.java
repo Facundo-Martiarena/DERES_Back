@@ -18,6 +18,6 @@ public class Answer {
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private Boolean answer;
-    private Long question_id;
-    private String provider_rut;
+    private Long questionID;
+    private String providerRut;
 }

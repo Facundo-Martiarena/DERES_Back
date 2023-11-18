@@ -12,6 +12,7 @@ import uy.edu.ucu.back.deres.entity.Answer;
 
 @Service
 public class AnswerService {
+
     @Autowired
     private AnswerRepository answerRepository;
 
@@ -19,8 +20,8 @@ public class AnswerService {
         try {
             var answer = Answer.builder()
                     .answer(answerDTO.getAnswer())
-                    .question_id(answerDTO.getQuestionID())
-                    .provider_rut(answerDTO.getProviderRut())
+                    .questionID(answerDTO.getQuestionID())
+                    .providerRut(answerDTO.getProviderRut())
                     .build();
             answerRepository.save(answer);
             return new ResponseOK(true);
@@ -41,7 +42,7 @@ public class AnswerService {
 
     public List<Answer> getByProvider(String providerRut) {
         try {
-            List<Answer> answers = answerRepository.findByRUT(providerRut);
+            List<Answer> answers = answerRepository.findByProviderRut(providerRut);
             return answers;
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener respuesta de la base de datos.", e);

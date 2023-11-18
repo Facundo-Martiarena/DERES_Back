@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` varchar(63) NOT NULL,
   `password` varchar(63) NOT NULL,
   `privilege` varchar(63) NOT NULL,
+  `email` varchar(63) NOT NULL,
   PRIMARY KEY (`username`)
 );
 
@@ -30,13 +31,14 @@ CREATE TABLE IF NOT EXISTS `answer` (
   `answer` boolean NOT NULL,
   `question_id` BIGINT NOT NULL,
   `provider_rut` varchar(63) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`)
+);
 
-INSERT INTO `user` (`username`, `password`, `privilege`) VALUES
-('admin', 'admin', 'ADMIN'),
-('user', 'user', 'USER'),
-('provider', 'provider', 'PROVIDER'),
-('all', 'all', 'ALL');
+INSERT INTO `user` (`username`, `password`, `privilege`, `email`) VALUES
+('admin', 'admin', 'ADMIN', 'admin@admin.com'),
+('user', 'user', 'USER', 'user@user.com'),
+('provider', 'provider', 'PROVIDER', 'provider@provider.com'),
+('all', 'all', 'ALL', 'all@all.com');
 
 INSERT INTO `provider` (`name`, `rut`, `type`, `score`) VALUES
 ('provider1', '111', 'tipo1', '20'),

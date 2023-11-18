@@ -8,5 +8,5 @@ import uy.edu.ucu.back.deres.entity.Answer;
 
 @Repository
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
-    List<Answer> findByRUT(String providerRut);
+    List<Answer> findByProviderRut(String providerRut);
 }
