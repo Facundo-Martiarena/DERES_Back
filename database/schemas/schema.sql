@@ -25,6 +25,13 @@ CREATE TABLE IF NOT EXISTS `question` (
   PRIMARY KEY (`id`)
 );
 
+CREATE TABLE IF NOT EXISTS `answer` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `answer` boolean NOT NULL,
+  `question_id` BIGINT NOT NULL,
+  `provider_rut` varchar(63) NOT NULL,
+  PRIMARY KEY (`id`),
+
 INSERT INTO `user` (`username`, `password`, `privilege`) VALUES
 ('admin', 'admin', 'ADMIN'),
 ('user', 'user', 'USER'),
@@ -41,3 +48,14 @@ INSERT INTO `question` (`question`, `type`, `ponderation`) VALUES
 ('test 1', 'AMBIENTAL', '50'),
 ('test 2', 'AMBIENTAL', '50'),
 ('test social', 'SOCIAL', '100');
+
+INSERT INTO `answer` (`answer`, `question_id`, `provider_rut`) VALUES
+(true, 1, '111'),
+(true, 1, '222'),
+(true, 1, '333'),
+(false, 2, '111'),
+(true, 2, '222'),
+(false, 2, '333'),
+(false, 3, '111'),
+(true, 3, '222'),
+(true, 3, '333');
