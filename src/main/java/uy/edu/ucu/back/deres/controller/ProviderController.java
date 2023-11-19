@@ -30,4 +30,11 @@ public class ProviderController {
         return providerService.getProviders();
     }
 
+    @GetMapping("/providers/{name}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseBody
+    private Provider getProvider(@PathVariable String name) throws Exception {
+        return providerService.getProvider(name);
+    }
+
 }

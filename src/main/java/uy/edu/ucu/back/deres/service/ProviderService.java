@@ -38,4 +38,12 @@ public class ProviderService {
             throw new RuntimeException("Error al agregar proveedor a la base de datos.", e);
         }
     }
+
+    public Provider getProvider(String name) {
+        try {
+            return providerRepository.findByName(name);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener proveedor de la base de datos.", e);
+        }
+    }
 }

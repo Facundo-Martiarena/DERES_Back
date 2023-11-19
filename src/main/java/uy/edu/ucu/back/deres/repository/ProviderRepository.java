@@ -8,4 +8,6 @@ import uy.edu.ucu.back.deres.entity.Provider;
 @Repository
 public interface ProviderRepository extends JpaRepository<Provider, Long> {
 
+    Provider findByName(String name);
+
 }
