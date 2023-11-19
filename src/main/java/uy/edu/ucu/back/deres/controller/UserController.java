@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import uy.edu.ucu.back.deres.entity.User;
 import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.user.UserLoginRequestDTO;
+import uy.edu.ucu.back.deres.model.user.UserLoginResponse;
 import uy.edu.ucu.back.deres.model.user.UserSignupRequestDTO;
 import uy.edu.ucu.back.deres.service.UserService;
 
@@ -20,21 +21,22 @@ public class UserController {
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    private ResponseOK login(@RequestBody UserLoginRequestDTO userRequestDTO){
+    public UserLoginResponse login(@RequestBody UserLoginRequestDTO userRequestDTO){
         return userService.loginUser(userRequestDTO);
     }
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    private ResponseOK signup(@RequestBody UserSignupRequestDTO userRequestDTO) throws Exception {
+    public ResponseOK signup(@RequestBody UserSignupRequestDTO userRequestDTO) throws Exception {
         return userService.signupUser(userRequestDTO);
     }
 
     @GetMapping("/users")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    private List<User> getUsers() throws Exception {
+    public List<User> getUsers() throws Exception {
         return userService.getUsers();
     }
+
 }

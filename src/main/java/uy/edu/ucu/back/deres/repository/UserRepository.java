@@ -8,4 +8,7 @@ import uy.edu.ucu.back.deres.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
+    //find by username
+    User findByUsername(String username);
+
 }

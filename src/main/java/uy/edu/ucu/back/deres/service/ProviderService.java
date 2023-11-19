@@ -18,8 +18,7 @@ public class ProviderService {
 
     public List<Provider> getProviders() {
         try {
-            List<Provider> providers = providerRepository.findAll();
-            return providers;
+            return providerRepository.findAll();
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener proveedores de la base de datos.", e);
         }

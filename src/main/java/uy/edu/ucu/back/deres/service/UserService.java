@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import uy.edu.ucu.back.deres.entity.User;
 import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.user.UserLoginRequestDTO;
+import uy.edu.ucu.back.deres.model.user.UserLoginResponse;
 import uy.edu.ucu.back.deres.model.user.UserSignupRequestDTO;
 import uy.edu.ucu.back.deres.repository.UserRepository;
 
@@ -18,18 +19,22 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public ResponseOK loginUser(UserLoginRequestDTO userRequestDTO){
-        return new ResponseOK(true);
+    public UserLoginResponse loginUser(UserLoginRequestDTO userRequestDTO){
+        try {
+            var user = userRepository.findByUsername(userRequestDTO.getName());
+            if (user != null && user.getPassword().equals(userRequestDTO.getPassword())) {
+                return new UserLoginResponse(true, user.getPrivilege());
+            }
+            return new UserLoginResponse(false, null);
+        } catch (DataAccessException e) {
+            throw new RuntimeException("Error al obtener usuario de la base de datos.", e);
+        }
     }
 
     public ResponseOK signupUser(UserSignupRequestDTO userRequestDTO) throws Exception {
         try {
-            var user = User.builder()
-                    .username(userRequestDTO.getName())
-                    .password(userRequestDTO.getPassword())
-                    .privilege(userRequestDTO.getPrivilege().toString().toUpperCase())
-                    .email(userRequestDTO.getEmail())
-                    .build();
+
+            var user = new User(userRequestDTO.getName(), userRequestDTO.getPassword(), userRequestDTO.getPrivilege().toString(), userRequestDTO.getEmail());
             userRepository.save(user);
             return new ResponseOK(true);
 
@@ -42,8 +47,7 @@ public class UserService {
 
     public List<User> getUsers() {
         try {
-            List<User> users = userRepository.findAll();
-            return users;
+            return userRepository.findAll();
         } catch (DataAccessException e) {
             throw new RuntimeException("Error al obtener usuarios de la base de datos.", e);
         }

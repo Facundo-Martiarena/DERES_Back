@@ -54,6 +54,7 @@ public class QuestionService {
                     .build();
 
             questionRepository.updateQuestion(questionEntity.getQuestion(), questionEntity.getType(), questionEntity.getPonderation(), questionEntity.getId());
+
             return new ResponseOK(true);
         }
         catch (Exception e) {

@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @AllArgsConstructor
-public class UserLoginRequestDTO {
-    private String name;
-    private String password;
-    private String email;
+public class UserLoginResponse {
+
+    private Boolean accepted;
+    private String privilege;
 }
