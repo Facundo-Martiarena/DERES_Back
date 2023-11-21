@@ -11,4 +11,5 @@ public class UserLoginResponse {
 
     private Boolean accepted;
     private String privilege;
+    private String providerID;
 }

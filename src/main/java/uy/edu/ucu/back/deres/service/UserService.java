@@ -23,9 +23,9 @@ public class UserService {
         try {
             var user = userRepository.findByUsername(userRequestDTO.getName());
             if (user != null && user.getPassword().equals(userRequestDTO.getPassword())) {
-                return new UserLoginResponse(true, user.getPrivilege());
+                return new UserLoginResponse(true, user.getPrivilege(), user.getProviderID());
             }
-            return new UserLoginResponse(false, null);
+            return new UserLoginResponse(false, null, null);
         } catch (DataAccessException e) {
             throw new RuntimeException("Error al obtener usuario de la base de datos.", e);
         }
@@ -34,7 +34,7 @@ public class UserService {
     public ResponseOK signupUser(UserSignupRequestDTO userRequestDTO) throws Exception {
         try {
 
-            var user = new User(userRequestDTO.getName(), userRequestDTO.getPassword(), userRequestDTO.getPrivilege().toString(), userRequestDTO.getEmail());
+            var user = new User(userRequestDTO.getName(), userRequestDTO.getPassword(),userRequestDTO.getPrivilege().toString(), userRequestDTO.getEmail(), userRequestDTO.getProviderID());
             userRepository.save(user);
             return new ResponseOK(true);
 

@@ -16,6 +16,9 @@ public class Provider {
     @Id
     private String name;
     private String rut;
+    private String address;
+    private String phone;
+    private String email;
     private String type;
     private String score;
 

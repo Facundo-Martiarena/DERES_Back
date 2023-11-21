@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(63) NOT NULL,
   `privilege` varchar(63) NOT NULL,
   `email` varchar(63) NOT NULL,
+  `provider_id` VARCHAR(63),
   PRIMARY KEY (`username`)
 );
 
@@ -14,8 +15,8 @@ CREATE TABLE IF NOT EXISTS `provider` (
   `rut` varchar(63) NOT NULL,
   `type` varchar(63) NOT NULL,
   `score` varchar(63) NOT NULL,
-  PRIMARY KEY (`name`),
-  UNIQUE KEY `rut` (`rut`)
+  PRIMARY KEY (`rut`),
+  UNIQUE KEY `name` (`name`)
 );
 
 CREATE TABLE IF NOT EXISTS `question` (

@@ -1,6 +1,6 @@
 package uy.edu.ucu.back.deres.model.user;
 
-import java.util.UUID;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +13,7 @@ public class UserSignupRequestDTO {
     private String name;
     private String password;
     private Privilege privilege;
-    private UUID id;
     private String email;
+    @JsonProperty("provider_id")
+    private String providerID;
 }
