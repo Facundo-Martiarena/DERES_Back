@@ -35,11 +35,11 @@ CREATE TABLE IF NOT EXISTS `answer` (
   PRIMARY KEY (`id`)
 );
 
-INSERT INTO `user` (`username`, `password`, `privilege`, `email`) VALUES
-('admin', 'admin', 'ADMIN', 'admin@admin.com'),
-('user', 'user', 'USER', 'user@user.com'),
-('provider', 'provider', 'PROVIDER', 'provider@provider.com'),
-('all', 'all', 'ALL', 'all@all.com');
+INSERT INTO `user` (`username`, `password`, `privilege`, `email`, `provider_id`) VALUES
+('admin', 'admin', 'ADMIN', 'admin@admin.com', null),
+('user', 'user', 'USER', 'user@user.com', null),
+('provider', 'provider', 'PROVIDER', 'facumartiarena1995@gmail.com', '111'),
+('all', 'all', 'ALL', 'all@all.com', null);
 
 INSERT INTO `provider` (`name`, `rut`, `type`, `score`) VALUES
 ('provider1', '111', 'tipo1', '20'),
