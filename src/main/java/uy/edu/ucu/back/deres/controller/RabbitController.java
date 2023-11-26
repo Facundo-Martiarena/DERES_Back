@@ -23,5 +23,5 @@ public class RabbitController {
         return rabbitService.sendEmail();
     }
 
-
+x
 }

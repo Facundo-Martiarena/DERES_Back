@@ -1,5 +1,6 @@
 package uy.edu.ucu.back.deres.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -28,6 +29,7 @@ public class User {
     private String email;
 
     @Column(name = "provider_id")
+    @JsonProperty("provider_id")
     private String providerID;
 
     public User() {
