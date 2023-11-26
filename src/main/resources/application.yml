@@ -13,23 +13,25 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
 
 
+
   spring:
     mail:
-      host: smtp.example.com
+      host: smtp.gmail.com
       port: 587
-      username: topicos.avanzados@gmail.com
-      password: ucu.2023
+      username: 'sistemas.distribuidos2023@gmail.com'
+      password: 'huoxjemlwiopgwnr'
       properties:
         mail:
           smtp:
             auth: true
             starttls:
               enable: true
+          from: topicos@gmail.com
 
 
-    rabbitmq:
-      host: localhost
-      port: 5672
-      username: guest
-      password: guest
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
