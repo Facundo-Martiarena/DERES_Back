@@ -21,6 +21,7 @@ public class Provider {
     private String email;
     private String type;
     private String score;
+    private String contact;
 
     public Provider() {
     }

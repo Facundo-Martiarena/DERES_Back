@@ -19,6 +19,7 @@ public class AnswerService {
     public ResponseOK addAnswers(AnswersRequestDTO answersDTO, String providerRUT) {
         try {
             //replace with new answers
+            //HACK
             getByProvider(providerRUT).forEach(answer -> answerRepository.delete(answer));
             for (AnswerRequestDTO answerDTO : answersDTO.getQuestions()) {
                 var answer = Answer.builder()

@@ -11,7 +11,6 @@ import uy.edu.ucu.back.deres.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 @Service
 public class RabbitService {

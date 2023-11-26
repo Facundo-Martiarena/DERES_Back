@@ -9,11 +9,15 @@ import lombok.Setter;
 @Setter
 public class ProviderRequestDTO {
 
-    private String name;
     @JsonProperty("rut")
     private String RUT;
+    private String name;
     private String type;
+    private String email;
+    private String contact;
+    private String phone;
     private String score;
+    private String address;
 
     public ProviderRequestDTO() {
     }
