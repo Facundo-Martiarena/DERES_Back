@@ -14,14 +14,14 @@ public class AnswerController {
     @Autowired
     private AnswerService answerService; 
 
-    @GetMapping("/answers/{providerRut}")
+    @GetMapping("/answers/{provider_rut}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    public List<Answer> getAnswers(@PathVariable("providerRut") String providerRut) {
+    public List<Answer> getAnswers(@PathVariable("provider_rut") String providerRut) {
         return answerService.getByProvider(providerRut);
     }
 
-    @PostMapping("/answers/{providerRut}")
+    @PostMapping("/answers/{provider_rut}")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public ResponseOK addAnswers(@RequestBody AnswersRequestDTO answersRequestDTO, @PathVariable("providerRut") String providerRut) {
