@@ -22,5 +22,4 @@ public class RabbitController {
     public ResponseOK sendMail() throws Exception {
         return rabbitService.sendEmail();
     }
-
 }

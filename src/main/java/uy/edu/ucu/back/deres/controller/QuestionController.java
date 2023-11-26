@@ -29,7 +29,7 @@ public class QuestionController {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     private ResponseOK modifyQuestion(@RequestBody QuestionRequestDTO questionRequestDTO){
-        return questionService.modifyQuestion(questionRequestDTO);
+        return questionService.updateQuestion(questionRequestDTO);
     }
 
     @GetMapping("/questions")

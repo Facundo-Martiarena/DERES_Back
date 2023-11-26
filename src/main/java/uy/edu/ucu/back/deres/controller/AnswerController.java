@@ -8,7 +8,6 @@ import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.answer.AnswersRequestDTO;
 import uy.edu.ucu.back.deres.service.AnswerService;
 
-import java.util.Collections;
 import java.util.List;
 
 @RestController

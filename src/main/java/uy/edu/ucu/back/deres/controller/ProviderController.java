@@ -33,8 +33,8 @@ public class ProviderController {
     @GetMapping("/providers/{rut}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    private Provider getProvider(@PathVariable String name) throws Exception {
-        return providerService.getProvider(name);
+    private Provider getProvider(@PathVariable("rut") String rut) throws Exception {
+        return providerService.getProvider(rut);
     }
 
 }
