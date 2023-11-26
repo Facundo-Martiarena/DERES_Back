@@ -14,6 +14,8 @@ public class Answer {
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private Boolean answer;
+    @Column(name = "question_id")
     private Long questionID;
+    @Column(name = "provider_rut")
     private String providerRut;
 }
