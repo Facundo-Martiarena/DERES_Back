@@ -27,6 +27,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "provider_id")
+    private String providerID;
 
     public User() {
 
