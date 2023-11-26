@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-
 import uy.edu.ucu.back.deres.entity.User;
 import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.user.UserLoginRequestDTO;

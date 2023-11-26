@@ -1,21 +1,14 @@
 package uy.edu.ucu.back.deres.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
+import org.springframework.web.bind.annotation.*;
 import uy.edu.ucu.back.deres.entity.Answer;
 import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.answer.AnswerRequestDTO;
 import uy.edu.ucu.back.deres.service.AnswerService;
+
+import java.util.List;
 
 public class AnswerController {
     @Autowired

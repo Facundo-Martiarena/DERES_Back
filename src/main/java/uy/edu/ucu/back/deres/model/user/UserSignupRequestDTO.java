@@ -1,10 +1,10 @@
 package uy.edu.ucu.back.deres.model.user;
 
-import java.util.UUID;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.UUID;
 
 @Setter
 @Getter

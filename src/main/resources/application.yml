@@ -11,3 +11,25 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+
+
+  spring:
+    mail:
+      host: smtp.example.com
+      port: 587
+      username: topicos.avanzados@gmail.com
+      password: ucu.2023
+      properties:
+        mail:
+          smtp:
+            auth: true
+            starttls:
+              enable: true
+
+
+    rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+
