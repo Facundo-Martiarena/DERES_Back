@@ -44,7 +44,7 @@ public class QuestionService {
 
     }
 
-    public ResponseOK modifyQuestion(QuestionRequestDTO questionsRequestDTO) {
+    public ResponseOK updateQuestion(QuestionRequestDTO questionsRequestDTO) {
         try{
             var questionEntity = Question.builder()
                     .id(questionsRequestDTO.getId())

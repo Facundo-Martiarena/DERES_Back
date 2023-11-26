@@ -39,9 +39,9 @@ public class ProviderService {
         }
     }
 
-    public Provider getProvider(String name) {
+    public Provider getProvider(String rut) {
         try {
-            return providerRepository.findByName(name);
+            return providerRepository.findByRut(rut);
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener proveedor de la base de datos.", e);
         }
