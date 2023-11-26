@@ -45,10 +45,10 @@ INSERT INTO `user` (`username`, `password`, `privilege`, `email`, `provider_id`)
 ('all', 'all', 'ALL', 'all@all.com', null);
 
 INSERT INTO `provider` (`name`, `rut`, `type`, `score`, `contact`, `email`, `phone`) VALUES
-('provider1', '111', 'tipo1', '20', `fede`, `fede@provider1.com`, `065046`),
-('provider2', '222', 'tipo2', '50', `fede`, `fede@provider2.com`, `234824`),
-('provider3', '333', 'tipo3', '98', `fede`, `fede@provider3.com`, `090787`),
-('provider4', '444', 'tipo4', '15', `fede`, `fede@provider4.com`, `565868`);
+('provider1', '111', 'tipo1', '20', 'fede', 'fede@provider1.com', '065046'),
+('provider2', '222', 'tipo2', '50', 'fede', 'fede@provider2.com', '234824'),
+('provider3', '333', 'tipo3', '98', 'fede', 'fede@provider3.com', '090787'),
+('provider4', '444', 'tipo4', '15', 'fede', 'fede@provider4.com', '565868');
 
 INSERT INTO `question` (`question`, `type`, `ponderation`) VALUES
 ('test 1', 'AMBIENTAL', '50'),

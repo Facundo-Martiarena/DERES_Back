@@ -8,8 +8,10 @@ import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.answer.AnswersRequestDTO;
 import uy.edu.ucu.back.deres.service.AnswerService;
 
+import java.util.Collections;
 import java.util.List;
 
+@RestController
 public class AnswerController {
     @Autowired
     private AnswerService answerService; 
@@ -18,13 +20,20 @@ public class AnswerController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
     public List<Answer> getAnswers(@PathVariable("provider_rut") String providerRut) {
-        return answerService.getByProvider(providerRut);
+        return answerService.getByProviderRut(providerRut);
+    }
+
+    @GetMapping("/answers")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseBody
+    public List<Answer> getAnswers() {
+        return answerService.getByProvider();
     }
 
     @PostMapping("/answers/{provider_rut}")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public ResponseOK addAnswers(@RequestBody AnswersRequestDTO answersRequestDTO, @PathVariable("providerRut") String providerRut) {
+    public ResponseOK addAnswers(@RequestBody AnswersRequestDTO answersRequestDTO, @PathVariable("provider_rut") String providerRut) {
         return answerService.addAnswers(answersRequestDTO, providerRut);
     }
 }

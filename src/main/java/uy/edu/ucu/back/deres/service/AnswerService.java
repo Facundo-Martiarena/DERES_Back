@@ -20,7 +20,7 @@ public class AnswerService {
         try {
             //replace with new answers
             //HACK
-            getByProvider(providerRUT).forEach(answer -> answerRepository.delete(answer));
+            getByProviderRut(providerRUT).forEach(answer -> answerRepository.delete(answer));
             for (AnswerRequestDTO answerDTO : answersDTO.getQuestions()) {
                 var answer = Answer.builder()
                         .answer(answerDTO.getAnswer())
@@ -35,7 +35,7 @@ public class AnswerService {
         }
     }
 
-    public List<Answer> getByProvider(String providerRut) {
+    public List<Answer> getByProviderRut(String providerRut) {
         try {
             List<Answer> answers = answerRepository.findByProviderRut(providerRut);
             return answers;
@@ -43,4 +43,15 @@ public class AnswerService {
             throw new RuntimeException("Error al obtener respuesta de la base de datos.", e);
         }
     }
+
+    public List<Answer> getByProvider() {
+        try {
+            List<Answer> answers = answerRepository.findAll();
+            return answers;
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener respuesta de la base de datos.", e);
+        }
+    }
+
+
 }
