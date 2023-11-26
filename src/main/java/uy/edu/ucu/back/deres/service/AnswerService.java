@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import uy.edu.ucu.back.deres.entity.Answer;
 import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.answer.AnswerRequestDTO;
+import uy.edu.ucu.back.deres.model.answer.AnswersRequestDTO;
 import uy.edu.ucu.back.deres.repository.AnswerRepository;
 
 import java.util.List;
@@ -15,27 +16,21 @@ public class AnswerService {
     @Autowired
     private AnswerRepository answerRepository;
 
-    public ResponseOK addAnswer(AnswerRequestDTO answerDTO) {
+    public ResponseOK addAnswers(AnswersRequestDTO answersDTO, String providerRUT) {
         try {
-            var answer = Answer.builder()
-                    .answer(answerDTO.getAnswer())
-                    .questionID(answerDTO.getQuestionID())
-                    .providerRut(answerDTO.getProviderRut())
-                    .build();
-            answerRepository.save(answer);
+            //replace with new answers
+            getByProvider(providerRUT).forEach(answer -> answerRepository.delete(answer));
+            for (AnswerRequestDTO answerDTO : answersDTO.getQuestions()) {
+                var answer = Answer.builder()
+                        .answer(answerDTO.getAnswer())
+                        .questionID(answerDTO.getQuestionID())
+                        .providerRut(providerRUT)
+                        .build();
+                answerRepository.save(answer);
+            }
             return new ResponseOK(true);
         } catch (Exception e) {
             throw new RuntimeException("Error al agregar respuesta a la base de datos.", e);
-        }
-    }
-
-    public ResponseOK updateAnswer(AnswerRequestDTO answerDTO) {
-        try {
-            var answer = answerRepository.findById(answerDTO.getQuestionID());
-            answer.get().setAnswer(answerDTO.getAnswer());
-            return new ResponseOK(true);
-        } catch (Exception e) {
-            throw new RuntimeException("Error al actualizar respuesta a la base de datos.", e);
         }
     }
 

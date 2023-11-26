@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import uy.edu.ucu.back.deres.entity.Answer;
 import uy.edu.ucu.back.deres.model.ResponseOK;
-import uy.edu.ucu.back.deres.model.answer.AnswerRequestDTO;
+import uy.edu.ucu.back.deres.model.answer.AnswersRequestDTO;
 import uy.edu.ucu.back.deres.service.AnswerService;
 
 import java.util.List;
@@ -14,24 +14,17 @@ public class AnswerController {
     @Autowired
     private AnswerService answerService; 
 
-    @GetMapping("/answers/{providerRut}")
+    @GetMapping("/answers/{provider_rut}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ResponseBody
-    public List<Answer> getAnswers(@PathVariable("providerRut") String providerRut) {
+    public List<Answer> getAnswers(@PathVariable("provider_rut") String providerRut) {
         return answerService.getByProvider(providerRut);
     }
 
-    @PostMapping("/answers")
+    @PostMapping("/answers/{provider_rut}")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public ResponseOK addAnswer(@RequestBody AnswerRequestDTO answerRequestDTO) {
-        return answerService.addAnswer(answerRequestDTO);
-    }
-
-    @PutMapping("/answers")
-    @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public ResponseOK updateAnswer(@RequestBody AnswerRequestDTO answerRequestDTO) {
-        return answerService.updateAnswer(answerRequestDTO);
+    public ResponseOK addAnswers(@RequestBody AnswersRequestDTO answersRequestDTO, @PathVariable("providerRut") String providerRut) {
+        return answerService.addAnswers(answersRequestDTO, providerRut);
     }
 }
