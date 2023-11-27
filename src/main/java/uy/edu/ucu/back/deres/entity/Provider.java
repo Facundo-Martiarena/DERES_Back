@@ -1,5 +1,6 @@
 package uy.edu.ucu.back.deres.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -20,8 +21,15 @@ public class Provider {
     private String phone;
     private String email;
     private String type;
-    private String score;
+    @Column (name = "score")
+    private String totalScore;
     private String contact;
+    @Column (name = "social_score")
+    private String socialScore;
+    @Column (name = "ambiental_score")
+    private String ambientalScore;
+    @Column (name = "gobernanza_score")
+    private String gobernanzaScore;
 
     public Provider() {
     }

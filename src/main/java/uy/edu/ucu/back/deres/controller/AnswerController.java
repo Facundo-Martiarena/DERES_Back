@@ -22,13 +22,6 @@ public class AnswerController {
         return answerService.getByProviderRut(providerRut);
     }
 
-    @GetMapping("/answers")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @ResponseBody
-    public List<Answer> getAnswers() {
-        return answerService.getByProvider();
-    }
-
     @PostMapping("/answers/{provider_rut}")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody

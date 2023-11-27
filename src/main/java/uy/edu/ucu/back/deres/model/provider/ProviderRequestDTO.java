@@ -16,7 +16,6 @@ public class ProviderRequestDTO {
     private String email;
     private String contact;
     private String phone;
-    private String score;
     private String address;
 
     public ProviderRequestDTO() {

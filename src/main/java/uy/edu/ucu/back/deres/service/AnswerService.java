@@ -43,15 +43,4 @@ public class AnswerService {
             throw new RuntimeException("Error al obtener respuesta de la base de datos.", e);
         }
     }
-
-    public List<Answer> getByProvider() {
-        try {
-            List<Answer> answers = answerRepository.findAll();
-            return answers;
-        } catch (Exception e) {
-            throw new RuntimeException("Error al obtener respuesta de la base de datos.", e);
-        }
-    }
-
-
 }

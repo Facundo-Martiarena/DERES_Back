@@ -45,11 +45,12 @@ INSERT INTO `user` (`username`, `password`, `privilege`, `email`, `provider_id`)
 ('provider', 'provider', 'PROVIDER', 'facumartiarena1995@gmail.com', '111'),
 ('all', 'all', 'ALL', 'all@all.com', null);
 
-INSERT INTO `provider` (`name`, `rut`, `type`, `score`, `contact`, `email`, `phone`, `address`) VALUES
-('provider1', '111', 'tipo1', '20', 'fede', 'fede@provider1.com', '065046', 'calle 123'),
-('provider2', '222', 'tipo2', '50', 'agus', 'agus@provider2.com', '234824', 'calle 456'),
-('provider3', '333', 'tipo3', '98', 'hernan', 'hernan@provider3.com', '090787', 'calle 789'),
-('provider4', '444', 'tipo4', '15', 'cecilia', 'cecilia@provider4.com', '565868', 'calle 874');
+INSERT INTO `provider` (`name`, `rut`, `type`, `score`, `contact`, `email`, `phone`, `address`, `social_score`, `ambiental_score`, `gobernanza_score`) VALUES
+('provider1', '111', 'tipo1', '20', 'fede', 'fede@provider1.com', '065046', 'calle 123', '10', '10', '10'),
+('provider2', '222', 'tipo2', '50', 'agus', 'agus@provider2.com', '234824', 'calle 456', '10', '10', '10'),
+('provider3', '333', 'tipo3', '98', 'hernan', 'hernan@provider3.com', '090787', 'calle 789', '10', '10', '10'),
+('provider4', '444', 'tipo4', '15', 'cecilia', 'cecilia@provider4.com', '565868', 'calle 874', '10', '10', '10'),
+('provider5', '555', 'tipo5', '30', 'facu', ');
 
 
 INSERT INTO `question` (`question`, `type`, `ponderation`) VALUES
