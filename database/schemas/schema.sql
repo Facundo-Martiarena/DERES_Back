@@ -19,6 +19,9 @@ CREATE TABLE IF NOT EXISTS `provider` (
   `email` VARCHAR(63) NOT NULL,
   `phone` VARCHAR(63) NOT NULL,
   `address` VARCHAR(63) NOT NULL,
+  `social_score` VARCHAR(63) NOT NULL,
+  `ambiental_score` VARCHAR(63) NOT NULL,
+  `gobernanza_score` VARCHAR(63) NOT NULL,
   PRIMARY KEY (`rut`),
   UNIQUE KEY `name` (`name`)
 );
@@ -49,8 +52,7 @@ INSERT INTO `provider` (`name`, `rut`, `type`, `score`, `contact`, `email`, `pho
 ('provider1', '111', 'tipo1', '20', 'fede', 'fede@provider1.com', '065046', 'calle 123', '10', '10', '10'),
 ('provider2', '222', 'tipo2', '50', 'agus', 'agus@provider2.com', '234824', 'calle 456', '10', '10', '10'),
 ('provider3', '333', 'tipo3', '98', 'hernan', 'hernan@provider3.com', '090787', 'calle 789', '10', '10', '10'),
-('provider4', '444', 'tipo4', '15', 'cecilia', 'cecilia@provider4.com', '565868', 'calle 874', '10', '10', '10'),
-('provider5', '555', 'tipo5', '30', 'facu', ');
+('provider4', '444', 'tipo4', '15', 'cecilia', 'cecilia@provider4.com', '565868', 'calle 874', '10', '10', '10');
 
 
 INSERT INTO `question` (`question`, `type`, `ponderation`) VALUES
