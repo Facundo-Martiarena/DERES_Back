@@ -3,9 +3,9 @@ package uy.edu.ucu.back.deres.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import uy.edu.ucu.back.deres.entity.Answer;
 import uy.edu.ucu.back.deres.entity.Provider;
 import uy.edu.ucu.back.deres.entity.Question;
-import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.provider.ProviderRequestDTO;
 import uy.edu.ucu.back.deres.model.provider.ProviderResponseDTO;
 import uy.edu.ucu.back.deres.repository.ProviderRepository;
@@ -15,6 +15,10 @@ import java.util.List;
 
 @Service
 public class ProviderService {
+
+    String SOCIAL = "SOCIAL";
+    String AMBIENTAL = "AMBIENTAL";
+    String GOBERNANZA = "GOBERNANZA";
 
     @Autowired
     private ProviderRepository providerRepository;
@@ -30,13 +34,13 @@ public class ProviderService {
             for (Provider provider : providers) {
                 var totalScore = 0.0;
                 var score = getScore(provider.getRut());
-                if(score.get("social") != null && score.get("ambiental") != null && score.get("gobernanza") != null){
-                    totalScore = Math.round((score.get("social") * 33.34 + score.get("ambiental") * 33.34 + score.get("gobernanza") * 33.34));
+                if(score.get(SOCIAL) != null && score.get(AMBIENTAL) != null && score.get(GOBERNANZA) != null){
+                    totalScore = Math.round((score.get(SOCIAL) * 33.34 + score.get(AMBIENTAL) * 33.34 + score.get(GOBERNANZA) * 33.34)/100);
                 }
                 provider.setTotalScore(String.valueOf(totalScore));
-                provider.setSocialScore(String.valueOf(score.get("social")));
-                provider.setAmbientalScore(String.valueOf(score.get("ambiental")));
-                provider.setGobernanzaScore(String.valueOf(score.get("gobernanza")));
+                provider.setSocialScore(String.valueOf(score.get(SOCIAL)));
+                provider.setAmbientalScore(String.valueOf(score.get(AMBIENTAL)));
+                provider.setGobernanzaScore(String.valueOf(score.get(GOBERNANZA)));
             }
             return providers;
         } catch (Exception e) {
@@ -48,8 +52,8 @@ public class ProviderService {
         try {
             var totalScore = 0.0;
             var score = getScore(provider.getRUT());
-            if(score.get("social") != null && score.get("ambiental") != null && score.get("gobernanza") != null){
-                totalScore = Math.round((score.get("social") * 33.34 + score.get("ambiental") * 33.34 + score.get("gobernanza") * 33.34));
+            if(score.get(SOCIAL) != null && score.get(AMBIENTAL) != null && score.get(GOBERNANZA) != null){
+                totalScore = Math.round((score.get(SOCIAL) * 33.34 + score.get(AMBIENTAL) * 33.34 + score.get(GOBERNANZA) * 33.34));
             }
             var providerEntity = Provider.builder()
                     .name(provider.getName())
@@ -60,9 +64,9 @@ public class ProviderService {
                     .email(provider.getEmail())
                     .contact(provider.getContact())
                     .totalScore(String.valueOf(totalScore))
-                    .socialScore(String.valueOf(score.get("social")))
-                    .ambientalScore(String.valueOf(score.get("ambiental")))
-                    .gobernanzaScore(String.valueOf(score.get("gobernanza")))
+                    .socialScore(String.valueOf(score.get(SOCIAL)))
+                    .ambientalScore(String.valueOf(score.get(AMBIENTAL)))
+                    .gobernanzaScore(String.valueOf(score.get(GOBERNANZA)))
                     .build();
             providerRepository.save(providerEntity);
             return new ProviderResponseDTO(true, provider.getRUT());
@@ -73,12 +77,15 @@ public class ProviderService {
 
     public Provider getProvider(String rut) {
         try {
+            var totalScore = 0.0;
             var score = getScore(rut);
-            var totalScore = Math.round((score.get("social") * 33.34 + score.get("ambiental") * 33.34 + score.get("gobernanza") * 33.34));
+            if(score.get(SOCIAL) != null && score.get(AMBIENTAL) != null && score.get(GOBERNANZA) != null){
+                totalScore = Math.round((score.get(SOCIAL) * 33.34 + score.get(AMBIENTAL) * 33.34 + score.get(GOBERNANZA) * 33.34));
+            }
             Provider provider = providerRepository.findByRut(rut);
-            provider.setSocialScore(String.valueOf(score.get("social")));
-            provider.setAmbientalScore(String.valueOf(score.get("ambiental")));
-            provider.setGobernanzaScore(String.valueOf(score.get("gobernanza")));
+            provider.setSocialScore(String.valueOf(score.get(SOCIAL)));
+            provider.setAmbientalScore(String.valueOf(score.get(AMBIENTAL)));
+            provider.setGobernanzaScore(String.valueOf(score.get(GOBERNANZA)));
             provider.setTotalScore(String.valueOf(totalScore));
             
             return provider;
@@ -97,22 +104,25 @@ public class ProviderService {
             var questions = questionService.getQuestions();
             var answers = answerService.getByProviderRut(rut);
 
-            for (var answer : answers) {
-                Question question = questions.stream().filter(q -> q.getId() == answer.getQuestionID()).findFirst().get();
-                if (answer.getAnswer()) {
-                    int ponderation = Integer.parseInt(question.getPonderation());
-                    if (question.getType().equals("SOCIAL")) {
-                        socialScore += ponderation;
-                    } else if (question.getType().equals("AMBIENTAL")) {
-                        ambientalScore += ponderation;
-                    } else if (question.getType().equals("GOBERNANZA")) {
-                        gobernanzaScore += ponderation;
+            for (Answer answer : answers) {
+                for (Question question : questions) {
+                    if (answer.getQuestionID() == question.getId()) {
+                        if (answer.getAnswer()) {
+                            int ponderation = Integer.parseInt(question.getPonderation());
+                            if (question.getType().equals(SOCIAL)) {
+                                socialScore += ponderation;
+                            } else if (question.getType().equals(AMBIENTAL)) {
+                                ambientalScore += ponderation;
+                            } else if (question.getType().equals(GOBERNANZA)) {
+                                gobernanzaScore += ponderation;
+                            }
+                        }
                     }
                 }
             }
-            scores.put("SOCIAL", socialScore);
-            scores.put("AMBIENTAL", ambientalScore);
-            scores.put("GOBERNANZA", gobernanzaScore);
+            scores.put(SOCIAL, socialScore);
+            scores.put(AMBIENTAL, ambientalScore);
+            scores.put(GOBERNANZA, gobernanzaScore);
             return scores;
         } catch (Exception e) {
             throw new RuntimeException("Error calculando el score.", e);

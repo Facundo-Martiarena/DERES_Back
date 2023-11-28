@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import uy.edu.ucu.back.deres.entity.Provider;
-import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.provider.ProviderRequestDTO;
 import uy.edu.ucu.back.deres.model.provider.ProviderResponseDTO;
 import uy.edu.ucu.back.deres.service.ProviderService;
