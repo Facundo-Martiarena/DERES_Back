@@ -7,6 +7,7 @@ import uy.edu.ucu.back.deres.entity.Provider;
 import uy.edu.ucu.back.deres.entity.Question;
 import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.provider.ProviderRequestDTO;
+import uy.edu.ucu.back.deres.model.provider.ProviderResponseDTO;
 import uy.edu.ucu.back.deres.repository.ProviderRepository;
 
 import java.util.HashMap;
@@ -43,7 +44,7 @@ public class ProviderService {
         }
     }
 
-    public ResponseOK addProvider(ProviderRequestDTO provider) {
+    public ProviderResponseDTO addProvider(ProviderRequestDTO provider) {
         try {
             var totalScore = 0.0;
             var score = getScore(provider.getRUT());
@@ -64,7 +65,7 @@ public class ProviderService {
                     .gobernanzaScore(String.valueOf(score.get("gobernanza")))
                     .build();
             providerRepository.save(providerEntity);
-            return new ResponseOK(true);
+            return new ProviderResponseDTO(true, provider.getRUT());
         } catch (Exception e) {
             throw new RuntimeException("Error al agregar proveedor a la base de datos.", e);
         }

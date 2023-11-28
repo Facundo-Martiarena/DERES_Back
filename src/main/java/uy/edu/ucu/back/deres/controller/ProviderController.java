@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import uy.edu.ucu.back.deres.entity.Provider;
 import uy.edu.ucu.back.deres.model.ResponseOK;
 import uy.edu.ucu.back.deres.model.provider.ProviderRequestDTO;
+import uy.edu.ucu.back.deres.model.provider.ProviderResponseDTO;
 import uy.edu.ucu.back.deres.service.ProviderService;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class ProviderController {
     @PostMapping("/addProvider")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    private ResponseOK addProvider(@RequestBody ProviderRequestDTO providerAddRequestDTO){
+    private ProviderResponseDTO addProvider(@RequestBody ProviderRequestDTO providerAddRequestDTO){
         return providerService.addProvider(providerAddRequestDTO);
     }
 
