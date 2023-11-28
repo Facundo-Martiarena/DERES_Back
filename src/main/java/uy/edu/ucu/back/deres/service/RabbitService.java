@@ -43,6 +43,7 @@ public class RabbitService {
 
                 String emailRequestJson = new ObjectMapper().writeValueAsString(emailRequest);
 
+                rabbitTemplate.setReplyAddress("noreply@deres.com");
                 rabbitTemplate.convertAndSend("deresQueue", emailRequestJson);
             }
             return new ResponseOK(true);

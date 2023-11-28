@@ -80,7 +80,7 @@ public class ProviderService {
             var totalScore = 0.0;
             var score = getScore(rut);
             if(score.get(SOCIAL) != null && score.get(AMBIENTAL) != null && score.get(GOBERNANZA) != null){
-                totalScore = Math.round((score.get(SOCIAL) * 33.34 + score.get(AMBIENTAL) * 33.34 + score.get(GOBERNANZA) * 33.34));
+                totalScore = Math.round((score.get(SOCIAL) * 33.34 + score.get(AMBIENTAL) * 33.34 + score.get(GOBERNANZA) * 33.34)/100);
             }
             Provider provider = providerRepository.findByRut(rut);
             provider.setSocialScore(String.valueOf(score.get(SOCIAL)));

@@ -56,9 +56,9 @@ INSERT INTO `provider` (`name`, `rut`, `type`, `score`, `contact`, `email`, `pho
 
 
 INSERT INTO `question` (`question`, `type`, `ponderation`) VALUES
-('test 1', 'AMBIENTAL', '50'),
-('test 2', 'AMBIENTAL', '50'),
-('test social', 'SOCIAL', '100');
+('Cuentan con días para mujeres embarazadas?', 'GOBERNANZA', '50'),
+('Se recicla en su empresa?', 'AMBIENTAL', '50'),
+('Tiene politicas de diversidad e inclusion?', 'SOCIAL', '100');
 
 INSERT INTO `answer` (`answer`, `question_id`, `provider_rut`) VALUES
 (true, 1, '111'),

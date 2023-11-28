@@ -23,7 +23,7 @@ spring:
           auth: true
           starttls:
             enable: true
-          from: topicos@gmail.com
+          from: no-replay-topicos
 
 
   rabbitmq:
