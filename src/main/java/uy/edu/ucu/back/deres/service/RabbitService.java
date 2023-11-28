@@ -31,6 +31,9 @@ public class RabbitService {
     public ResponseOK sendEmail() throws JsonProcessingException {
         List<String> providers = getEmailList();
 
+        //List<String> providers = new ArrayList<>();
+        //providers.add("facumartiarena1995@gmail.com");
+
         String subject = "Deres - Encuesta actualizada";
         String text = "La encuesta se ha actualizado, ingrese a la web si quiere realizarla de nuevo.";
 
@@ -52,14 +55,17 @@ public class RabbitService {
     public List<String> getEmailList() {
         try {
             List<User> users = userRepository.findAll();
-            logger.info("users: {}", users);
             List<String> emails = new ArrayList<>();
 
+            logger.info("users: {}", users);
+
             for (User user : users) {
-                if (Privilege.PROVIDER.equals(user.getPrivilege())) {
+                if (Privilege.PROVIDER.toString().equals(user.getPrivilege())) {
                     emails.add(user.getEmail());
                 }
             }
+
+            logger.info("emails: {}", emails);
             return emails;
         } catch (DataAccessException e) {
             logger.error("Error al recuperar los usuarios de la base de datos", e);

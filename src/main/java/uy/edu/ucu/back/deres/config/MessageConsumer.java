@@ -1,5 +1,6 @@
 package uy.edu.ucu.back.deres.config;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,21 +15,16 @@ public class MessageConsumer {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
-
     @RabbitListener(queues = "deresQueue")
-    public void handleEmailRequest(String emailRequestJson) {
-        try {
-            EmailRequest emailRequest = objectMapper.readValue(emailRequestJson, EmailRequest.class);
+    public void handleEmailRequest(String emailRequestString) throws JsonProcessingException {
 
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setTo(emailRequest.getTo());
-            message.setSubject(emailRequest.getSubject());
-            message.setText(emailRequest.getText());
+        EmailRequest emailRequest = new ObjectMapper().readValue(emailRequestString, EmailRequest.class);
 
-            javaMailSender.send(message);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(emailRequest.getTo());
+        message.setSubject(emailRequest.getSubject());
+        message.setText(emailRequest.getText());
+
+        javaMailSender.send(message);
     }
 }
