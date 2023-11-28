@@ -24,10 +24,14 @@ public class ProviderService {
 
     public List<Provider> getProviders() {
         try {
+
             List<Provider> providers = providerRepository.findAll();
             for (Provider provider : providers) {
+                var totalScore = 0.0;
                 var score = getScore(provider.getRut());
-                var totalScore = Math.round((score.get("social") * 33.34 + score.get("ambiental") * 33.34 + score.get("gobernanza") * 33.34));
+                if(score.get("social") != null && score.get("ambiental") != null && score.get("gobernanza") != null){
+                    totalScore = Math.round((score.get("social") * 33.34 + score.get("ambiental") * 33.34 + score.get("gobernanza") * 33.34));
+                }
                 provider.setTotalScore(String.valueOf(totalScore));
                 provider.setSocialScore(String.valueOf(score.get("social")));
                 provider.setAmbientalScore(String.valueOf(score.get("ambiental")));
@@ -41,8 +45,11 @@ public class ProviderService {
 
     public ResponseOK addProvider(ProviderRequestDTO provider) {
         try {
+            var totalScore = 0.0;
             var score = getScore(provider.getRUT());
-            var totalScore = Math.round((score.get("social") * 33.34 + score.get("ambiental") * 33.34 + score.get("gobernanza") * 33.34));
+            if(score.get("social") != null && score.get("ambiental") != null && score.get("gobernanza") != null){
+                totalScore = Math.round((score.get("social") * 33.34 + score.get("ambiental") * 33.34 + score.get("gobernanza") * 33.34));
+            }
             var providerEntity = Provider.builder()
                     .name(provider.getName())
                     .rut(provider.getRUT())
